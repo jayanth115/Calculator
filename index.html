@@ -1,0 +1,108 @@
+<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #calculator {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      max-width: 300px;
+      margin-top: 50px;
+      padding: 10px;
+      border: 4px solid #060505;
+      background-color: rgba(150, 70, 0, 0.8);
+      border-radius: 15px;
+    }
+
+    #inputField {
+      grid-column: span 4;
+      width: calc(100% - 10px);
+      text-align: right;
+      font-size: 20px;
+      margin: 5px;
+      border: 1.5px solid black;
+      border-radius: 15px;
+    }
+
+    .button {
+      width: 100%;
+      height: 50px;
+      font-size: 20px;
+      border: 1.5px solid black;
+      border-radius: 15px;
+    }
+  </style>
+  <title>Calculator</title>
+</head>
+<body>
+  <div id="calculator">
+    <input type="text" id="inputField" readonly class="t1" />
+    <button class="button" onclick="appendToInput('1')">1</button>
+    <button class="button" onclick="appendToInput('2')">2</button>
+    <button class="button" onclick="appendToInput('3')">3</button>
+    <button class="button" onclick="appendToInput('+')">+</button>
+    <button class="button" onclick="appendToInput('4')">4</button>
+    <button class="button" onclick="appendToInput('5')">5</button>
+    <button class="button" onclick="appendToInput('6')">6</button>
+    <button class="button" onclick="appendToInput('-')">-</button>
+    <button class="button" onclick="appendToInput('7')">7</button>
+    <button class="button" onclick="appendToInput('8')">8</button>
+    <button class="button" onclick="appendToInput('9')">9</button>
+    <button class="button" onclick="appendToInput('*')">x</button>
+    <button class="button" onclick="appendToInput('0')">0</button>
+    <button class="button" onclick="backspace()">Del</button>
+    <button class="button" onclick="clearInput()">Clear</button>
+    <button class="button" onclick="calculate()">=</button>
+    <button class="button" onclick="appendToInput('/')">/</button>
+    <button class="button" onclick="square()">x^2</button>
+    <button class="button" onclick="cube()">x^3</button>
+    <button class="button" onclick="sqrt()">Sqrt</button>
+  </div>
+
+  <script>
+    function appendToInput(value) {
+      document.getElementById('inputField').value += value;
+    }
+
+    function backspace() {
+      var currentInput = document.getElementById('inputField').value;
+      document.getElementById('inputField').value = currentInput.slice(0, currentInput.length - 1);
+    }
+
+    function square() {
+      var currentInput = document.getElementById('inputField').value;
+      document.getElementById('inputField').value = eval(currentInput) ** 2;
+    }
+
+    function cube() {
+      var currentInput = document.getElementById('inputField').value;
+      document.getElementById('inputField').value = eval(currentInput) ** 3;
+    }
+
+    function clearInput() {
+      document.getElementById('inputField').value = '';
+    }
+
+    function calculate() {
+      document.getElementById('inputField').value = eval(document.getElementById('inputField').value);
+    }
+
+    function sqrt() {
+      var currentInput = document.getElementById('inputField').value;
+      document.getElementById('inputField').value = Math.sqrt(eval(currentInput));
+    }
+  </script>
+</body>
+</html>
+
+
